@@ -31,5 +31,10 @@ namespace math_quiz_365
         {
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
