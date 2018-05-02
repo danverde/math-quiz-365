@@ -96,7 +96,6 @@
             this.plusRightLabel.TabIndex = 3;
             this.plusRightLabel.Text = "?";
             this.plusRightLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.plusRightLabel.Click += new System.EventHandler(this.plusRightLabel_Click);
             // 
             // label4
             // 
@@ -107,7 +106,6 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "=";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -118,7 +116,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "+";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // sum
             // 
@@ -285,6 +282,7 @@
             this.startButton.TabIndex = 1;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // Form1
             // 
