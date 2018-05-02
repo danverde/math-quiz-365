@@ -17,6 +17,15 @@ namespace math_quiz_365
         int addend1;
         int addend2;
 
+        int subend1;
+        int subend2;
+
+        int mulend1;
+        int mulend2;
+
+        int divend1;
+        int divend2;
+
         int timeLeft;
 
         public Form1()
@@ -34,13 +43,20 @@ namespace math_quiz_365
             /* get random ints to use for the addition problem */
             addend1 = randomizer.Next(51);
             addend2 = randomizer.Next(51);
+            subend1 = randomizer.Next(0, 101);
+            subend2 = randomizer.Next(1, subend1);
 
             /* disply values  */
             plusLeftLabel.Text = addend1.ToString();
             plusRightLabel.Text = addend2.ToString();
+            minusLeftLabel.Text = subend1.ToString();
+            minusRightLabel.Text = subend2.ToString();
 
             /* set sum to 0 */
             sum.Value = 0;
+            difference.Value = 0;
+            product.Value = 0;
+            quotient.Value = 0;
             
             /* start the timer */
             timeLeft = 30;
@@ -56,14 +72,15 @@ namespace math_quiz_365
 
         private bool checkTheAnswers()
         {
-            bool correctAnswers = true;
 
-            if (addend1 + addend2 != sum.Value)
+            if ((addend1 + addend2 == sum.Value) && (subend1 - subend2 == difference.Value))
             {
-                correctAnswers = false;
+                return true;
             }
-
-            return correctAnswers;
+            else
+            {
+                return false;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -86,6 +103,17 @@ namespace math_quiz_365
                 MessageBox.Show("You didn't finish in time.", "Sorry!");
                 sum.Value = addend1 + addend2;
                 startButton.Enabled = true;
+            }
+        }
+
+        private void answer_Enter(object sender, EventArgs e)
+        {
+            NumericUpDown answerBox = sender as NumericUpDown;
+            
+            if (answerBox != null)
+            {
+                int lengthOfAnswer = answerBox.Value.ToString().Length;
+                answerBox.Select(0, lengthOfAnswer);
             }
         }
     }
