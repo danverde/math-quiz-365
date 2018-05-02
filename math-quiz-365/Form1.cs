@@ -40,6 +40,9 @@ namespace math_quiz_365
 
         public void startQuiz()
         {
+            /* ensure the counter starts black */
+            timeLabel.ForeColor = Color.Black;
+
             /* get random ints to use for the math problems */
             addend1 = randomizer.Next(51);
             addend2 = randomizer.Next(51);
@@ -78,7 +81,7 @@ namespace math_quiz_365
             
             /* start the timer */
             timeLeft = 30;
-            timeLabel.Text = "30 seconds";
+            timeLabel.Text = $"{timeLeft} seconds";
             timer1.Start();
         }
         
@@ -103,6 +106,13 @@ namespace math_quiz_365
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            /* Turn the countdown red if you're running low on time */
+            if (timeLeft <= 6)
+            {
+                timeLabel.ForeColor = Color.Red;
+            }
+
+
             if (checkTheAnswers())
             {
                 timer1.Stop();
