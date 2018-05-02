@@ -20,8 +20,8 @@ namespace math_quiz_365
         int subend1;
         int subend2;
 
-        int mulend1;
-        int mulend2;
+        int multiplier1;
+        int multiplier2;
 
         int divend1;
         int divend2;
@@ -40,17 +40,35 @@ namespace math_quiz_365
 
         public void startQuiz()
         {
-            /* get random ints to use for the addition problem */
+            /* get random ints to use for the math problems */
             addend1 = randomizer.Next(51);
             addend2 = randomizer.Next(51);
+
             subend1 = randomizer.Next(0, 101);
             subend2 = randomizer.Next(1, subend1);
+
+            multiplier1 = randomizer.Next(2, 11);
+            multiplier2 = randomizer.Next(2, 11);
+
+            divend2 = randomizer.Next(2, 11);
+            int temporaryQuotient = randomizer.Next(2, 11);
+            divend1 = divend2 * temporaryQuotient;
+            divisionLeftLabel.Text = divend1.ToString();
+            divisionRightLabel.Text = divend2.ToString();
+
 
             /* disply values  */
             plusLeftLabel.Text = addend1.ToString();
             plusRightLabel.Text = addend2.ToString();
+
             minusLeftLabel.Text = subend1.ToString();
             minusRightLabel.Text = subend2.ToString();
+
+            timesLeftLabel.Text = multiplier1.ToString();
+            timesRightLabel.Text = multiplier2.ToString();
+
+            divisionLeftLabel.Text = divend1.ToString();
+            divisionRightLabel.Text = divend2.ToString();
 
             /* set sum to 0 */
             sum.Value = 0;
@@ -59,7 +77,7 @@ namespace math_quiz_365
             quotient.Value = 0;
             
             /* start the timer */
-            timeLeft = 30;
+            timeLeft = 300;
             timeLabel.Text = "30 seconds";
             timer1.Start();
         }
@@ -73,7 +91,7 @@ namespace math_quiz_365
         private bool checkTheAnswers()
         {
 
-            if ((addend1 + addend2 == sum.Value) && (subend1 - subend2 == difference.Value))
+            if ((addend1 + addend2 == sum.Value) && (subend1 - subend2 == difference.Value) && (multiplier1 * multiplier2 == product.Value) && (divend1 / divend2 == quotient.Value))
             {
                 return true;
             }
