@@ -31,11 +31,12 @@ namespace math_quiz_365
         public Form1()
         {
             InitializeComponent();
+            insertDate();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         public void startQuiz()
@@ -146,6 +147,12 @@ namespace math_quiz_365
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfAnswer);
             }
+        }
+
+        private void insertDate()
+        {
+            var currDate = DateTime.Now;
+            currentDate.Text = currDate.ToString("dd/MM/yyyy");
         }
     }
 }
