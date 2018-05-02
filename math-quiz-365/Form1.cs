@@ -19,6 +19,16 @@ namespace math_quiz_365
 
         int timeLeft;
 
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public void startQuiz()
         {
             /* get random ints to use for the addition problem */
@@ -37,26 +47,34 @@ namespace math_quiz_365
             timeLabel.Text = "30 seconds";
             timer1.Start();
         }
-
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void StartButton_Click(object sender, EventArgs e)
         {
             startQuiz();
             startButton.Enabled = false;
         }
 
+        private bool checkTheAnswers()
+        {
+            bool correctAnswers = true;
+
+            if (addend1 + addend2 != sum.Value)
+            {
+                correctAnswers = false;
+            }
+
+            return correctAnswers;
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (timeLeft > 0)
+            if (checkTheAnswers())
+            {
+                timer1.Stop();
+                MessageBox.Show("You got all the answers right!", "Congratulations!");
+                startButton.Enabled = true;
+            }
+            else if (timeLeft > 0)
             {
                 timeLeft = timeLeft - 1;
                 timeLabel.Text = timeLeft + " seconds";
