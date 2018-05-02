@@ -77,7 +77,7 @@ namespace math_quiz_365
             quotient.Value = 0;
             
             /* start the timer */
-            timeLeft = 300;
+            timeLeft = 30;
             timeLabel.Text = "30 seconds";
             timer1.Start();
         }
@@ -120,6 +120,9 @@ namespace math_quiz_365
                 timeLabel.Text = "Time's Up!";
                 MessageBox.Show("You didn't finish in time.", "Sorry!");
                 sum.Value = addend1 + addend2;
+                difference.Value = subend1 - subend2;
+                product.Value = multiplier1 * multiplier2;
+                quotient.Value = divend1 / divend2;
                 startButton.Enabled = true;
             }
         }
